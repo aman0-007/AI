@@ -3,7 +3,7 @@ from q import Queue
 class CityGraph :
 
     def __init__(self):
-        print("Get distance between cities...")
+        #print("Get distance between cities...")
         self.graph = {}
 
     def addCity(self, city):
@@ -56,48 +56,65 @@ class CityGraph :
                         print(f"Distance between {source} and {destinationCity} is {distance} kms")
                         return
 
+# cg = CityGraph()
+# cg.addCity("Mumbai")
+# cg.addCity("Satara")
+# cg.addCity("Pune")
+# cg.addCity("Nagpur")
+# cg.addCity("Bhusaval")
+
+
+# cg.getCity()
+
+# cg.addDistance("Mumbai", "Pune", 150)
+# cg.addDistance("Mumbai", "Satara", 170)
+# cg.addDistance("Mumbai", "Nagpur", 175)
+# cg.addDistance("Pune", "Satara", 75)
+# cg.addDistance("Pune", "Nagpur", 168)
+# cg.addDistance("Bhusaval", "Satara", 50)
+# cg.addDistance("Bhusaval", "Nagpur", 180)
+
+# cg.displayGraph()
+
+# cg.getLinksWithDistance()
+
+# print("=====================")
+
+# cg.getLinks()
+# print("================================")
+# cg.isPathExits("Mumbai", "Pune")
+
 cg = CityGraph()
-cg.addCity("Mumbai")
-cg.addCity("Satara")
-cg.addCity("Pune")
-cg.addCity("Nagpur")
-cg.addCity("Bhusaval")
-
-
-cg.getCity()
-
-cg.addDistance("Mumbai", "Pune", 150)
-cg.addDistance("Mumbai", "Satara", 170)
-cg.addDistance("Mumbai", "Nagpur", 175)
-cg.addDistance("Pune", "Satara", 75)
-cg.addDistance("Pune", "Nagpur", 168)
-cg.addDistance("Bhusaval", "Satara", 50)
-cg.addDistance("Bhusaval", "Nagpur", 180)
-
-cg.displayGraph()
-
-cg.getLinksWithDistance()
-
-print("=====================")
-
-cg.getLinks()
-print("================================")
-cg.isPathExits("Mumbai", "Pune")
-
 while(True):
-    cg = CityGraph()
     print("==================== City Graph Options : ====================")
-    print("1. Add Cities\n2. Add links and distance\n3. Display City Graph\n4. Get Cities\n5. Does Path Exists between ?")
+    print("1. Add Cities\n2. Add links and distance\n3. Display City Graph\n4. Get Cities\n5. Does Path Exists between ?\n6. Get Links")
     opt = int(input("Choose an option : "))
     
     if opt == 1 :
         op = "y"
+        print("============= Add Cities =============")
         while op == "y":
-            print("============= Add Cities =============")
             cg.addCity(input("Enter city name :"))
             op = input("Add more y/n ?")
     if opt == 2 :
         print("============= Add links and distance =============")
         op = "y"
         while op == "y" :
-            
+            cg.addDistance(input("Enter Source :"), input("Enter Destination :"), input("Enter Distance :"))
+            op = input("Add more y/n ?")
+    if opt == 3 :
+        print("============= City Graph =============\n")
+        cg.displayGraph()
+    if opt == 4 :
+        print("============= All City =============\n")
+        cg.getCity()
+    if opt == 5:
+        print("============= All City =============\n")
+        cg.isPathExits(input("Enter source city name"), input("Enter destination city name"))
+    if opt == 6:
+        print("============= All City Links =============\n")
+        cg.getLinksWithDistance()
+        
+    if opt not in [1, 2, 3, 4, 5, 6]:
+        print("Please select appropriate options")
+        
