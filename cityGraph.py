@@ -56,7 +56,19 @@ class CityGraph :
                         print(f"Distance between {source} and {destinationCity} is {distance} kms")
                         return
 
-# cg = CityGraph()
+    def BFS(self,src, dst):
+        visited = set()
+        frontier = Queue()
+        frontier.enqueue(src)
+        
+        visited.add(src)
+        while frontier:
+            Node = frontier.dequeue()
+            neighbour = self.graph[Node].keys()
+            
+            
+            
+cg = CityGraph()
 # cg.addCity("Mumbai")
 # cg.addCity("Satara")
 # cg.addCity("Pune")
@@ -64,17 +76,18 @@ class CityGraph :
 # cg.addCity("Bhusaval")
 
 
-# cg.getCity()
+cg.getCity()
 
-# cg.addDistance("Mumbai", "Pune", 150)
-# cg.addDistance("Mumbai", "Satara", 170)
-# cg.addDistance("Mumbai", "Nagpur", 175)
-# cg.addDistance("Pune", "Satara", 75)
-# cg.addDistance("Pune", "Nagpur", 168)
-# cg.addDistance("Bhusaval", "Satara", 50)
-# cg.addDistance("Bhusaval", "Nagpur", 180)
+cg.addDistance("Mumbai", "Pune", 150)
+cg.addDistance("Mumbai", "Satara", 170)
+cg.addDistance("Mumbai", "Nagpur", 175)
+cg.addDistance("Pune", "Satara", 75)
+cg.addDistance("Pune", "Nagpur", 168)
+cg.addDistance("Bhusaval", "Satara", 50)
+cg.addDistance("Bhusaval", "Nagpur", 180)
 
-# cg.displayGraph()
+# cg.BFS("Mumbai", "Pune")
+cg.displayGraph()
 
 # cg.getLinksWithDistance()
 
@@ -84,6 +97,10 @@ class CityGraph :
 # print("================================")
 # cg.isPathExits("Mumbai", "Pune")
 
+
+
+
+'''
 cg = CityGraph()
 while(True):
     print("==================== City Graph Options : ====================")
@@ -118,3 +135,4 @@ while(True):
     if opt not in [1, 2, 3, 4, 5, 6]:
         print("Please select appropriate options")
         
+ '''
