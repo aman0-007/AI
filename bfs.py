@@ -1,3 +1,5 @@
+from q import Queue
+
 city_map = {
     "Delhi": ["Jaipur", "Lucknow", "Chandigarh", "Agra"],
     "Jaipur": ["Delhi", "Ahmedabad", "Indore", "Udaipur"],
@@ -27,27 +29,29 @@ city_map = {
 }
 
 
-def DFS(graph,src,dst,path=None):
+def BFS(graph,src,dst):
+    q = Queue()
     
-    if path is None:
-        path = []
+    q.enqueue((src,[src]))
+    visited = set()
+    
+    while not q.isEmpty():
+        currentCity, path = q.dequeue()
         
-    path.append(src)
-    
-    if src == dst :
-        return path
-    
-    for neighbour in graph.get(src, []):
-        if neighbour not in path:
-            result = DFS(graph,neighbour,dst,path)
-            if result:
-                return result
-    path.pop()
+        if currentCity == dst:
+            return path
+        
+        visited.add(currentCity)
+        
+        for neighbour in graph.get(currentCity, []):
+            if neighbour not in visited:
+                q.enqueue((neighbour, path + [neighbour]))
     return None
 
-path = DFS(city_map,'Delhi','Patna')
 
-if path : 
-    print("Path found : "," -> " .join(path))
+path = BFS(city_map, 'Delhi', 'Patna')
+
+if path:
+    print("Shortest Path found:", " -> ".join(path))
 else:
     print("No path found")
